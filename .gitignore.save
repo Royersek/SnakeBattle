@@ -1,0 +1,11 @@
+
+
+# Ignorar carpeta de pruebas/distribución
+distribucion/
+*.log
+
+# Ignorar archivos ocultos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+

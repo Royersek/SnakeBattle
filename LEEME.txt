@@ -1,0 +1,45 @@
+SNAKE BATTLE - VERSION CORREGIDA
+
+COMO JUGAR EN WINDOWS
+1. Extraer TODO el ZIP, conservando las carpetas.
+2. Abrir SnakeBattle/Iniciar_SnakeBattle.bat.
+   Requiere Java 21 o posterior instalado y disponible en PATH.
+3. ENTER para entrar al menu; flechas arriba/abajo y ENTER para elegir modo.
+4. Jugador 1: flechas. En modo versus, jugador 2: WASD.
+5. Para online, abrir esta misma version en dos PC de la misma red local.
+   Elegir ONLINE primero en una PC (host), esperar hasta que diga que espera
+   al jugador 2 y luego elegir ONLINE en la otra PC. Ambas usan flechas.
+   El host es verde (P1), el cliente azul (P2). R permite salir de online.
+   Si el firewall solicita permiso, permitir Java solo en redes privadas de
+   confianza. Se usan TCP 5204 y UDP 8888. No abrir puertos de Internet.
+6. En Game Over, R vuelve al menu.
+
+PARA EDITAR EL CODIGO EN PROCESSING
+Abrir SnakeBattle.pde con Processing en modo Java. Instalar la biblioteca
+Minim desde el gestor de bibliotecas (Sketch > Import Library > Manage
+Libraries) si no esta instalada. La red ahora usa las clases Socket,
+ServerSocket y DatagramSocket de Java; no necesita processing.net.
+La carpeta lib incluye las dependencias del lanzador Java independiente.
+No modificar directamente los JAR: si editas los PDE, ejecuta desde Processing
+para probar y vuelve a exportar el juego para generar un nuevo ejecutable.
+
+CAMBIOS
+- Crecimiento: conserva el segmento anterior de la cola.
+- Colisiones: ambos jugadores chocan con obstaculos, incluido el movimiento rapido.
+- Choque frontal simultaneo: ambos pierden si no tienen transparencia.
+- Portales: salida alineada con la grilla, validacion de pareja y de limites.
+- Iman: mueve la comida por celdas hacia la serpiente en ambas direcciones.
+- Online: un servidor simula el estado completo y el cliente envia controles;
+  ambos ven el mismo mapa, comida, obstaculos, portales, cuerpos y puntos.
+- Descubrimiento y conexion en segundo plano; cierre de sockets al salir.
+- Exportacion Java actualizada: el ejecutable usa esta version corregida.
+
+PRUEBAS
+21 pruebas locales y 6 comprobaciones de red automatizadas pasaron.
+Se compilo el codigo mediante una conversion de sintaxis PDE a Java y se
+probo con Processing Core 4.5.6 en Linux, usando dos procesos reales con
+sockets TCP y descubrimiento UDP por loopback. No se probo en dos equipos
+fisicos, ni el lanzador .bat en Windows, ni la exportacion nativa de Processing.
+Los MP3 originales estan incluidos; no se pudo escuchar el audio por falta
+de un dispositivo JavaSound compatible en el entorno de prueba.
+La carpeta original de Google Drive no fue modificada.
